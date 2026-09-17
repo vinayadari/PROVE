@@ -1,5 +1,3 @@
-"use server";
-
 export interface SignalReceipt {
   source: "GitHub" | "LeetCode" | "Portfolio" | "Resume" | "OpenSource" | "Certifications";
   status: "verified" | "pending" | "unlinked";

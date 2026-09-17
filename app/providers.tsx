@@ -1,5 +1,6 @@
 "use client";
 
+import "@/lib/polyfill";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ErrorBoundary from "@/components/ErrorBoundary";

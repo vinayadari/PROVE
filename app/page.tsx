@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import {
   ArrowDownRight,
   ArrowRight,
@@ -138,12 +139,18 @@ export default function Home() {
             >
               <Sparkles className="h-3.5 w-3.5" /> Test Sandbox
             </button>
-            <button
-              onClick={() => openAccess("recruiter")}
-              className="group flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2.5 text-[13px] font-medium transition-all hover:border-violet-400/60 hover:bg-violet-500/15"
+            <Link
+              href="/auth/sign-in"
+              className="text-[13px] text-white/70 transition-colors hover:text-white"
             >
-              Request access <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </button>
+              Sign In
+            </Link>
+            <Link
+              href="/dashboard"
+              className="group flex items-center gap-2 rounded-full border border-violet-500/40 bg-violet-600/20 px-4 py-2 text-[13px] font-medium text-violet-200 transition-all hover:border-violet-400 hover:bg-violet-600 hover:text-white"
+            >
+              Candidate Core <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
           </div>
 
           <button onClick={() => setMenuOpen((current) => !current)} className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-white md:hidden" aria-label="Toggle menu">
@@ -157,24 +164,16 @@ export default function Home() {
               <button className="py-2.5 text-left" onClick={() => scrollTo("how-it-works")}>How it works</button>
               <button className="py-2.5 text-left" onClick={() => scrollTo("candidates")}>Talent Pool</button>
               <button className="py-2.5 text-left" onClick={() => scrollTo("for-teams")}>For teams</button>
-              <button
-                className="py-2.5 text-left text-violet-300 font-medium"
-                onClick={() => {
-                  setMenuOpen(false);
-                  setAnalyzerOpen(true);
-                }}
-              >
-                Launch Sandbox
-              </button>
-              <button
+              <Link href="/auth/sign-in" className="py-2.5 text-left text-white/80" onClick={() => setMenuOpen(false)}>
+                Sign In
+              </Link>
+              <Link
+                href="/dashboard"
                 className="mt-2 rounded-xl bg-violet-600 py-3 text-center font-semibold text-white"
-                onClick={() => {
-                  setMenuOpen(false);
-                  openAccess("recruiter");
-                }}
+                onClick={() => setMenuOpen(false)}
               >
-                Request Access
-              </button>
+                Candidate Dashboard
+              </Link>
             </div>
           </div>
         )}
@@ -197,14 +196,15 @@ export default function Home() {
               PROVE turns the scattered evidence of someone&apos;s work into one clear, continuously evolving profile—so the right people get seen for what they can actually do.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <button onClick={() => setAnalyzerOpen(true)} className="group flex items-center gap-3 rounded-full bg-violet-600 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_rgba(124,58,237,.35)] transition-all hover:-translate-y-0.5 hover:bg-violet-500 active:scale-[.98]">
-                Test Live Proof Engine <Sparkles className="h-4 w-4" />
-              </button>
-              <button onClick={() => scrollTo("candidates")} className="group flex items-center gap-2 px-3 py-3 text-sm font-medium text-white/70 transition-colors hover:text-white">
-                <span className="grid h-8 w-8 place-items-center rounded-full border border-white/15 transition-colors group-hover:border-violet-300/70">
-                  <Users className="h-3.5 w-3.5 text-violet-300" />
-                </span>
-                Browse Verified Pool
+              <Link
+                href="/dashboard"
+                className="group flex items-center gap-3 rounded-full bg-violet-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_rgba(124,58,237,.35)] transition-all hover:-translate-y-0.5 hover:bg-violet-500 active:scale-[.98]"
+              >
+                Launch Candidate Core <Sparkles className="h-4 w-4" />
+              </Link>
+              <button onClick={() => setAnalyzerOpen(true)} className="group flex items-center gap-2 rounded-full border border-white/15 px-4 py-3 text-sm font-medium text-white/70 transition-colors hover:border-violet-400/50 hover:text-white">
+                <Play className="h-3.5 w-3.5 text-violet-300" />
+                Live Demo Sandbox
               </button>
             </div>
             <div className="mt-14 flex items-center gap-4 text-xs text-white/35">
