@@ -44,9 +44,9 @@ export async function POST(
     if (extProfile.provider === "github") {
       collectorResult = await collectGithubEvidence(extProfile.username, candidate.id);
     } else if (extProfile.provider === "leetcode") {
-      collectorResult = await collectLeetcodeEvidence(extProfile.username, candidate.id);
+      collectorResult = await collectLeetcodeEvidence(extProfile.username);
     } else if (extProfile.provider === "portfolio") {
-      collectorResult = await collectPortfolioEvidence(extProfile.profileUrl, candidate.id);
+      collectorResult = await collectPortfolioEvidence(extProfile.profileUrl);
     } else {
       return NextResponse.json({ error: "Unsupported provider" }, { status: 400 });
     }

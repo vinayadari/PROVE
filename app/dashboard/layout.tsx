@@ -30,6 +30,8 @@ export default function DashboardLayout({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSignOut = async () => {
+    document.cookie = "prove_demo_session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax";
+    localStorage.removeItem("prove-demo-user");
     await signOut();
     router.push("/auth/sign-in");
   };

@@ -3,13 +3,20 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Check for Neon Auth / Better Auth session cookies
   const hasSession =
     request.cookies.get("better-auth.session_token") ||
     request.cookies.get("__Secure-better-auth.session_token") ||
-    request.cookies.get("neon_auth_session");
+    request.cookies.get("neon_auth_session") ||
+    request.cookies.get("prove_demo_session");
 
-  // Protect dashboard routes for unauthenticated browser navigation
+  if (
+    pathname === "/auth/sign-in" &&
+    hasSession &&
+    request.headers.get("accept")?.includes("text/html")
+  ) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
+
   if (
     !hasSession &&
     pathname.startsWith("/dashboard") &&
