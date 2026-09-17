@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+.vercel/
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# TypeScript
+*.tsbuildinfo
+
+# Python artifacts (if tooling is used)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Build / coverage
+dist/
+build/
+coverage/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+uploads/
+
+# Temporary
+tmp/
+temp/
